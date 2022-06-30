@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+   name: tomcatapp
+   namespace: kube-pro
+   labels:
+     app: kube-pro
+
+spec:
+  containers:
+     - name: tomcat-image
+       image: tomcat:8.0
+       ports:
+         - name: kube-pro-port
+           containerPort: 8080

@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+   name: replica-app
+   labels:
+     app: kube-pro
+     project: kubehari
+spec:
+   selector:
+      matchLabels:
+         app: kube-pro
+   replicas: 3
+   template:
+     metadata:
+        labels:
+           app: kube-pro
+     spec:
+       containers:
+          - name: tomcat-image
+            image: tomcat:8.0
+            ports:
+              - name: kube-pro-port
+                containerPort: 8080
+

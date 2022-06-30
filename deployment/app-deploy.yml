@@ -1,0 +1,26 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+   name: deploy-app
+   labels:
+     app: kube-pro
+     project: kubehari
+
+spec:
+   replicas: 3
+   selector:
+      matchLabels:
+         app: kube-pro
+   template:
+       metadata:
+          labels:
+             app: kube-pro
+       spec:
+         containers:
+           - name: tomcat-image
+             image: tomcat
+             ports:
+              - name: kube-pro-port
+                containerPort: 8080
+

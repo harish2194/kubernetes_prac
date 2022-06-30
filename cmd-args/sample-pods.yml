@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo-cmd
+  labels:
+     app: demo
+spec:
+  containers:
+    - name: demo-container
+      image: debian
+      command: ["printenv"]
+      args: ["HOSTNAME", "KUBERNETES_PORT"]
+  restartPolicy: OnFailure

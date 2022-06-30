@@ -1,0 +1,24 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+   name: volume-demo
+   labels:
+     cimage: mysql
+
+spec:
+  containers:
+     - name: mysql-pod
+       image: mysql:5.7
+       volumeMounts:
+          - mountPath: /var/lib/mysql
+            name: mysql-volume
+
+       envFrom:
+          - configMapRef:
+               name: mysql-env
+  volumes:
+    - name: mysql-volume
+      hostPath:
+         path: /data
+         type: DirectoryOrCreate

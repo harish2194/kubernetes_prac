@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+   name: demo-cmd-env
+spec:
+  containers:
+     - name: demo-cmd
+       image: debian
+       command: ["/bin/echo"]
+       args: ["$(MSG)"]
+       env:
+        - name: MSG
+          value: "Hello this is from env"
+
+  restartPolicy: OnFailure
